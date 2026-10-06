@@ -1,0 +1,2 @@
+// Show module/network initialization failures instead of leaving an inert login form.
+import('./firebase.js').catch(error=>{console.error('KalkPro startup',error);document.querySelector('#login-error').textContent='Der Anmeldedienst konnte nicht gestartet werden. Bitte Internetverbindung prüfen und die Anwendung über HTTPS (GitHub Pages) oder einen lokalen Webserver öffnen.';document.querySelector('#loading').hidden=true;});
