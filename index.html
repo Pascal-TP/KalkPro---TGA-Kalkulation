@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KalkPro – TGA Kalkulation V0.2.0</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loading" class="loading" hidden role="status" aria-live="polite">
+      <span class="spinner"></span
+      ><span id="loading-text">Daten werden geladen …</span>
+    </div>
+    <div id="toast" hidden role="status" aria-live="polite"></div>
+    <section id="login" class="login">
+      <div class="login-card">
+        <img src="assets/tga-logo.png" alt="TGA Systemtechnik" /><span
+          class="eyebrow"
+          >KALKPRO · V0.2.0</span
+        >
+        <h1>Gut kalkuliert.<br />Klar entschieden.</h1>
+        <p>Projektkosten, Angebot und tatsächliches Ergebnis an einem Ort.</p>
+        <form id="login-form">
+          <label
+            >E-Mail-Adresse<input
+              id="email"
+              type="email"
+              autocomplete="username"
+              required /></label
+          ><label
+            >Passwort<input
+              id="password"
+              type="password"
+              autocomplete="current-password"
+              required
+          /></label>
+          <p id="login-error" role="alert"></p>
+          <button class="primary" type="submit">Anmelden <span>→</span></button>
+        </form>
+        <small
+          >Geschützter Zugang · Anmeldung mit dem vom Administrator eingerichteten Konto.</small
+        >
+      </div>
+      <div class="login-art">
+        <div class="art-mark">K<span>+</span></div>
+        <p>Die Grundlage bleibt.<br />Die Übersicht gewinnt.</p>
+        <small>TGA SYSTEMTECHNIK</small>
+      </div>
+    </section>
+    <section id="cloud-setup" class="login" hidden>
+      <div class="login-card"><h1>Cloud-Daten einrichten</h1><p>Dieser Bereich ist nur für einen bereits freigeschalteten Administrator zugänglich. Bitte die private Ausgangsdaten-Datei auswählen. Sie darf nicht im GitHub-Repository liegen.</p><input id="setup-file" type="file" accept=".json,application/json"><p id="setup-error" role="alert"></p><button id="setup-import" class="primary">Ausgangsdaten importieren</button><button id="setup-logout">Abmelden</button></div>
+    </section>
+    <div id="shell" class="shell" hidden>
+      <aside>
+        <div class="brand">
+          <img src="assets/tga-logo.png" alt="TGA Systemtechnik" />
+        </div>
+        <div class="product">
+          <strong>KalkPro</strong><span>TGA Kalkulation</span>
+        </div>
+        <nav id="navigation" aria-label="Hauptmenü"></nav>
+        <div class="sidebar-bottom">
+          <span class="status-dot"></span> Geschützt in Firestore<br /><small
+            >V0.2.0</small
+          >
+        </div>
+      </aside>
+      <div class="workspace">
+        <header>
+          <div>
+            <span id="crumb">Arbeitsbereich</span
+            ><strong id="header-title">Dashboard</strong>
+          </div>
+          <div class="header-actions">
+            <span class="avatar">PG</span
+            ><span class="username"
+              >Angemeldeter Benutzer<br /><small>Cloud-Zugang</small></span
+            ><button data-action="cloud-reload" class="quiet">Cloud-Daten neu laden</button><button data-action="logout" class="quiet">Abmelden</button>
+          </div>
+        </header>
+        <p id="cloud-notice" class="warning" hidden role="status"></p><main id="main"></main>
+        <footer>
+          KalkPro – TGA Kalkulation V0.2.0
+          <span>Firestore · interne Kalkulationsansicht</span>
+        </footer>
+      </div>
+    </div>
+    <dialog id="modal">
+      <form method="dialog">
+        <button class="modal-close" aria-label="Schließen">×</button>
+      </form>
+      <div id="modal-content"></div>
+    </dialog>
+    <input id="csv-file" type="file" accept=".csv,text/csv" hidden /><input
+      id="backup-file"
+      type="file"
+      accept=".json,application/json"
+      hidden
+    />
+    <script src="js/cloud-model.js"></script>
+    <script src="js/storage.js"></script>
+    <script type="module" src="js/bootstrap.js"></script>
+  </body>
+</html>
