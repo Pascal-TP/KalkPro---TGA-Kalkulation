@@ -22,3 +22,6 @@
 .matrix-pv-table .matrix-team{padding:6px}
 .matrix-pv-table .matrix-team input{width:62px;min-width:0;padding:6px;font-size:13px}
 .matrix-team input[readonly]{background:#f1f4f7}
+
+/* V0.2.0.4: Fortschritt im modalen Speichern-Dialog sichtbar halten */
+.matrix-saving-status{display:flex;align-items:center;gap:18px;padding:16px 0}.matrix-saving-status .spinner{flex:none;border-color:#b8c9da;border-top-color:var(--blue);width:34px;height:34px}.matrix-saving-status h2{margin-bottom:6px}.matrix-saving-status p{margin:0;color:var(--muted)}
