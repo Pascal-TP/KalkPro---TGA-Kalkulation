@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>KalkPro – TGA Kalkulation V0.3.0</title>
+    <title>KalkPro – TGA Kalkulation V0.3.1</title>
     <link rel="icon" href="assets/favicon.ico" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -17,7 +17,7 @@
       <div class="login-card">
         <img src="assets/tga-logo.png" alt="TGA Systemtechnik" /><span
           class="eyebrow"
-          >KALKPRO · V0.3.0</span
+          >KALKPRO · V0.3.1</span
         >
         <h1>Gut kalkuliert.<br />Klar entschieden.</h1>
         <p>Projektkosten, Angebot und tatsächliches Ergebnis an einem Ort.</p>
@@ -49,7 +49,7 @@
       </div>
     </section>
     <section id="cloud-setup" class="login" hidden>
-      <div class="login-card"><h1>Cloud-Daten einrichten</h1><p>Dieser Bereich ist nur für einen bereits freigeschalteten Administrator zugänglich. Bitte die private Ausgangsdaten-Datei auswählen. Sie darf nicht im GitHub-Repository liegen.</p><input id="setup-file" type="file" accept=".json,application/json"><p id="setup-error" role="alert"></p><button id="setup-import" class="primary">Ausgangsdaten importieren</button><button id="setup-logout">Abmelden</button></div>
+      <div class="login-card"><h1 id="setup-title">Arbeitsbereich einrichten</h1><p>Die private Initialdaten-JSON stellt die unveränderte Kalkulationsgrundlage bereit. Jeder persönliche Bereich und der offizielle Bereich werden separat eingerichtet. Keine fremden Projekte werden übernommen. Die Datei gehört nicht auf GitHub.</p><input id="setup-file" type="file" accept=".json,application/json"><p id="setup-error" role="alert"></p><button id="setup-import" class="primary">Ausgangsdaten importieren</button><button id="setup-personal" hidden>Persönlichen Bereich öffnen</button><button id="setup-logout">Abmelden</button></div>
     </section>
     <div id="shell" class="shell" hidden>
       <aside>
@@ -62,7 +62,7 @@
         <nav id="navigation" aria-label="Hauptmenü"></nav>
         <div class="sidebar-bottom">
           <span class="status-dot"></span> Geschützt in Firestore<br /><small
-            >V0.3.0</small
+            >V0.3.1</small
           >
         </div>
       </aside>
@@ -73,7 +73,7 @@
             ><strong id="header-title">Dashboard</strong>
           </div>
           <div class="header-actions">
-            <label class="workspace-choice">Arbeitsbereich<select id="workspace-select" aria-label="Arbeitsbereich"></select></label><button id="presence-button" class="quiet">Aktive Benutzer: …</button><span class="avatar">PG</span
+            <label class="workspace-choice">Arbeitsbereich<select id="workspace-select" aria-label="Arbeitsbereich"></select></label><button id="presence-button" class="quiet">Zuletzt aktiv</button><span class="avatar">PG</span
             ><span class="username"
               >Angemeldeter Benutzer<br /><small>Cloud-Zugang</small></span
             ><button data-action="cloud-reload" class="quiet">Cloud-Daten neu laden</button><button data-action="logout" class="quiet">Abmelden</button>
@@ -81,7 +81,7 @@
         </header>
         <p id="cloud-notice" class="warning" hidden role="status"></p><main id="main"></main>
         <footer>
-          KalkPro – TGA Kalkulation V0.3.0
+          KalkPro – TGA Kalkulation V0.3.1
           <span>Firestore · interne Kalkulationsansicht</span>
         </footer>
       </div>
@@ -99,7 +99,8 @@
       hidden
     />
     <script src="js/cloud-model.js"></script>
-    <script src="js/delta.js"></script>
+    <script src="js/audit-sdk.js"></script>
+    <script src="js/workspace.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/workspace-ui.js"></script>
     <script type="module" src="js/bootstrap.js"></script>
