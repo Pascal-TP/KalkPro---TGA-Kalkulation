@@ -32,3 +32,5 @@
 
 /* V0.2.0.4: Fortschritt im modalen Speichern-Dialog sichtbar halten */
 .matrix-saving-status{display:flex;align-items:center;gap:18px;padding:16px 0}.matrix-saving-status .spinner{flex:none;border-color:#b8c9da;border-top-color:var(--blue);width:34px;height:34px}.matrix-saving-status h2{margin-bottom:6px}.matrix-saving-status p{margin:0;color:var(--muted)}
+/* V0.3.0 workspace context, using the existing visual system. */
+header{height:auto;min-height:84px;gap:16px;flex-wrap:wrap}.header-actions{flex-wrap:wrap;justify-content:flex-end}.workspace-choice{min-width:145px}.workspace-choice select{margin-top:2px;min-height:36px;padding:6px 10px}#crumb{color:var(--blue);font-weight:600}#presence-button{white-space:nowrap}@media(max-width:1100px){header{align-items:flex-start}.header-actions{justify-content:flex-start}.workspace-choice{max-width:200px}}@media(max-width:600px){.header-actions{width:100%}.workspace-choice{flex:1 1 150px}.avatar{display:none}}
