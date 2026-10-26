@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>KalkPro – TGA Kalkulation V0.3.2</title>
+    <title>KalkPro – TGA Kalkulation V0.3.3</title>
     <link rel="icon" href="assets/favicon.ico" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -17,7 +17,7 @@
       <div class="login-card">
         <img src="assets/tga-logo.png" alt="TGA Systemtechnik" /><span
           class="eyebrow"
-          >KALKPRO · V0.3.2</span
+          >KALKPRO · V0.3.3</span
         >
         <h1>Gut kalkuliert.<br />Klar entschieden.</h1>
         <p>Projektkosten, Angebot und tatsächliches Ergebnis an einem Ort.</p>
@@ -35,6 +35,7 @@
               autocomplete="current-password"
               required
           /></label>
+          <button type="button" class="password-link" data-password-action="reset">Passwort vergessen?</button>
           <p id="login-error" role="alert"></p>
           <button class="primary" type="submit">Anmelden <span>→</span></button>
         </form>
@@ -62,7 +63,7 @@
         <nav id="navigation" aria-label="Hauptmenü"></nav>
         <div class="sidebar-bottom">
           <span class="status-dot"></span> Geschützt in Firestore<br /><small
-            >V0.3.2</small
+            >V0.3.3</small
           >
         </div>
       </aside>
@@ -81,7 +82,7 @@
         </header>
         <p id="cloud-notice" class="warning" hidden role="status"></p><main id="main"></main>
         <footer>
-          KalkPro – TGA Kalkulation V0.3.2
+          KalkPro – TGA Kalkulation V0.3.3
           <span>Firestore · interne Kalkulationsansicht</span>
         </footer>
       </div>
@@ -91,6 +92,26 @@
         <button class="modal-close" aria-label="Schließen">×</button>
       </form>
       <div id="modal-content"></div>
+    </dialog>
+    <dialog id="password-dialog" aria-labelledby="password-title" aria-describedby="password-feedback">
+      <button id="password-close" type="button" class="modal-close" data-password-action="close" aria-label="Dialog schließen">×</button>
+      <h2 id="password-title">Passwortverwaltung</h2>
+      <form id="password-form" novalidate>
+        <fieldset id="password-fields">
+          <div id="password-reset-fields"><label>E-Mail-Adresse<input id="reset-email" type="email" autocomplete="email" required></label><p class="muted">Der Reset-Link wird von Firebase versendet. Bitte prüfe auch Deinen Spam-Ordner.</p></div>
+          <div id="password-change-fields" hidden>
+            <p>Du änderst ausschließlich das Passwort Deines aktuell angemeldeten Kontos.</p>
+            <label>Aktuelles Passwort<input id="current-password" type="password" autocomplete="current-password" required></label>
+            <label>Neues Passwort<input id="new-password" type="password" autocomplete="new-password" aria-describedby="password-rule" required></label>
+            <label>Neues Passwort wiederholen<input id="repeat-password" type="password" autocomplete="new-password" required></label>
+            <p id="password-rule" class="muted">Mindestens 8 Zeichen, ein Großbuchstabe, ein Kleinbuchstabe, eine Ziffer und ein Sonderzeichen. Leerzeichen zählen nicht als Sonderzeichen.</p>
+          </div>
+        </fieldset>
+        <p id="password-feedback" role="status" aria-live="polite" hidden></p>
+        <p id="password-progress" role="status" aria-live="polite" hidden><span class="spinner" aria-hidden="true"></span> Bitte warten …</p>
+        <p id="password-cooldown" class="muted"></p>
+        <div class="actions"><button id="password-submit" type="submit" class="primary">Passwort ändern</button><button id="password-cancel" type="button" data-password-action="close">Abbrechen</button></div>
+      </form>
     </dialog>
     <input id="csv-file" type="file" accept=".csv,text/csv" hidden /><input
       id="backup-file"
@@ -103,6 +124,7 @@
     <script src="js/workspace.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/workspace-ui.js"></script>
+    <script src="js/passwords.js"></script>
     <script type="module" src="js/bootstrap.js"></script>
   </body>
 </html>
